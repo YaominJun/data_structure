@@ -75,7 +75,7 @@ append_class.h —— 非数组类的其他类
 
 ``Rank insert(T const &t){return insert(_size, t);} //默认插入末尾``
 
-![1](..\images\1.png)
+![1](../images/1.png)
 
 （5）删除元素 【没有链表方便，需要挪位置】
 
@@ -83,7 +83,7 @@ remove接口
 
 **注意：**先定义区间删除，再基于此定义单个元素删除。则只用O(N)的复杂度，也就是挪位置的复杂度。
 
-![2](..\images\2.png)
+![2](../images/2.png)
 
 （6）长度 √【方便】
 
