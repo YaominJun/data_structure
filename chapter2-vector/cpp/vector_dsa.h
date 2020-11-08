@@ -202,7 +202,7 @@ int VectorDsa<T>::deduplicate(){
             i++;
         }
     }
-    return _size - old_size;
+    return old_size -_size;
 }
 
 template <typename T>
