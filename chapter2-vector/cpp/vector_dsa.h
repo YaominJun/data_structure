@@ -155,6 +155,7 @@ Rank VectorDsa<T>::insert(Rank r, T const &t){
         // 因为是从0开始计数的，所以移动的是 [r, size)区间的数。
     }
     _elem[r] = t;
+    _size++;
     return r;
 }
 
