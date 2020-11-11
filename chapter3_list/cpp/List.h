@@ -31,6 +31,7 @@ public:
 
     //只读接口
     int size(){ return _size;}
+    bool empty(){ return !_size;}
     T& operator[](Rank r) const;
     ListNode<T>* first()const{ return header->next;}
     ListNode<T>* last()const{ return trailer->prev;}

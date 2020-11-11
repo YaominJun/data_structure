@@ -39,6 +39,7 @@ public:
 
     //只读访问接口
     Rank size()const { return _size;}
+    bool empty()const { return !_size;}
     Rank find(Rank b, Rank e,T const &t); //返回相等元素的最大的秩，所以用的反向查找
     Rank find(T const &t){ return find(0, _size, t);} //先写区间的，再写单独元素的，原因和删除一样。
     int disordered() const;

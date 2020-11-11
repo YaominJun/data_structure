@@ -12,6 +12,9 @@ public:
     void push(T const &t);
     T pop();
     T& top(); //由于是返回值是引用，可以修改栈顶元素
+    //友元
+    template <typename ST>
+    friend ostream& operator<<(ostream &os, Stack<ST> stack);
 };
 
 template <typename T>
@@ -30,6 +33,15 @@ template <typename T>
 T& Stack<T>::top(){
     //查找栈顶元素
     return this->_elem[this->size() - 1];
+}
+
+//友元
+template <typename ST>
+ostream& operator<<(ostream &os, Stack<ST> stack){
+    while (stack.size() > 0){
+        os << stack.pop();
+    }
+    return os;
 }
 
 #endif //CHAPTER4_STACK_QUEUE_STACK_H
