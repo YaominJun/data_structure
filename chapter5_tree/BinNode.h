@@ -5,29 +5,32 @@
 #ifndef CHAPTER5_TREE_BINNODE_H
 #define CHAPTER5_TREE_BINNODE_H
 
+#include <iostream>
+
 template <typename T> struct BinNode{
 public:
     //数据成员：主要是自身数据，左子树节点，右子树节点
     T data;
     BinNode<T> *LNode, *RNode;
     BinNode<T> *parent;
-    int height;
+    int height; //只要新创建一个节点，那么该节点的高度就是0。对于空树而言才是-1的高度。
 
     //构造函数
     BinNode(); //默认初始化
     BinNode(BinNode const& binNode); //拷贝初始化
-    BinNode(T t,  BinNode<T> *pNode = nullptr, BinNode<T> *lNode = nullptr, BinNode<T> *rNode = nullptr, int h = 0);
+    explicit BinNode(T t,  BinNode<T> *pNode = nullptr, BinNode<T> *lNode = nullptr, BinNode<T> *rNode = nullptr, int h = 0);
 
     //函数接口
     //只读接口
     BinNode<T>* insertAsLNode(T const& t);
     BinNode<T>* insertAsRNode(T const& t);
+    int getHeight(){ return height;}
 
 };
 
 template <typename T>
 BinNode<T>::BinNode():
-        LNode(nullptr), RNode(nullptr), parent(nullptr){
+        LNode(nullptr), RNode(nullptr), parent(nullptr), height(0){
 }
 
 template <typename T>
