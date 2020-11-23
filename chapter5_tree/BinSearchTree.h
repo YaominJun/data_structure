@@ -16,6 +16,7 @@ public:
     virtual BinNode<T>* & searchIn(BinNode<T>* &curNode, const T& t);
     virtual BinNode<T>* & searchIn(BinNode<T>* &curNode, const T& t, BinNode<T>* &parent_t);
     virtual BinNode<T>* insert(const T& t);
+
 };
 
 //静态查找
