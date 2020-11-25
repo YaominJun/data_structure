@@ -6,6 +6,7 @@
 #define CPP_VECTOR_DSA_H
 
 #include <iostream>
+
 #include "append_class.h"
 using namespace std;
 
@@ -15,7 +16,7 @@ typedef int Rank;
 template<typename T>
 class VectorDsa {
 protected:
-    Rank _size; int _capacity; T* _elem;
+    Rank _size; int _capacity; //T* _elem;
     void copyFrom(T const *A, Rank lo, Rank hi);
     void expand();
     /*
@@ -28,6 +29,7 @@ protected:
     void merge(Rank low, Rank middle, Rank high);
 
 public:
+    T* _elem;
     //构造函数【可多个】
     explicit VectorDsa(int c = DEFAULT_CAPACITY, int num = 0, T v = 0);
     VectorDsa( T const *A, Rank n){copyFrom(A, 0, n);}
@@ -64,7 +66,12 @@ public:
     void bubbleSort(){bubbleSort(0, _size);}
     void mergeSort(Rank b, Rank e); //归并排序
     void mergeSort(){mergeSort(0, _size);}
+//    friend void heapSort(VectorDsa<T> vectorDsa); //堆排序
+    /*
+    void heapSort(Rank b, Rank e); //堆排序
+    void heapSort(){ return heapSort(0, _size);}
 
+     */
     //友元
     template <typename VST> friend  ostream & operator<<(ostream &os, VectorDsa<VST> V);
     /*
@@ -76,6 +83,7 @@ public:
     }
     */
 };
+
 
 //构造函数
 template<typename T>
@@ -312,7 +320,19 @@ void VectorDsa<T>::merge(Rank low, Rank middle, Rank high){
     delete [] tmp_low;
 }
 
+/*
+template <typename T>
+void VectorDsa<T>::heapSort(Rank b, Rank e){
+//堆排序
+//先建堆，然后利用堆排序进行排序
+PriorityQueue<T> heap_(_elem + b, _elem + e);
+while (!heap_.empty()){
+    _elem[--e] = heap_.delMax(); //这一步已经将堆的首末元素调换完成，并且进行了下滤过程以满足堆的特性。
+}
 
+} //堆排序
+
+*/
 
 //友元
 //方式一
@@ -321,14 +341,16 @@ void VectorDsa<T>::merge(Rank low, Rank middle, Rank high){
 
 //方式二
 template <typename VST>  ostream & operator<<(ostream &os, VectorDsa<VST> V){
-    for (Rank i = 0; i < V._size; i++){
-        os << V._elem[i] << ",";
-    }
-    return os;
+for (Rank i = 0; i < V._size; i++){
+    os << V._elem[i] << ",";
+}
+return os;
 }
 
 template <typename T> void increase(VectorDsa<T> &V){
-    V.traverse(Increase<T>());
+V.traverse(Increase<T>());
 }
+
+
 
 #endif //CPP_VECTOR_DSA_H
