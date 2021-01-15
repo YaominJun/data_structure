@@ -1,0 +1,8 @@
+//
+// Created by luyao on 2021/1/15.
+//
+
+#ifndef CHAPTER2_RECURSION_NQUEEN_H
+#define CHAPTER2_RECURSION_NQUEEN_H
+
+#endif //CHAPTER2_RECURSION_NQUEEN_H
